@@ -7,25 +7,35 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+        </ul>
+    </nav>
     <header>
         <h1>Transaction Analysis</h1>
-        <nav>
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/transaction_analysis">Transaction Analysis</a></li>
-                <li><a href="/inventory_analysis">Inventory Analysis</a></li>
-            </ul>
-        </nav>
     </header>
     <main>
+        <h2>Generate Analysis</h2>
         <div>
-            <h2>Top 10 Products by Average Rating</h2>
-            {{ avg_rating_graph|safe }}
+            <button class="button" onclick="location.href='{{ url_for('plot_avg_rating') }}'">Top 10 Products by Average Rating</button>
+            <button class="button" onclick="location.href='{{ url_for('plot_num_reviews') }}'">Top 10 Products by Number of Reviews</button>
         </div>
-        <div>
-            <h2>Top 10 Products by Number of Reviews</h2>
-            {{ num_reviews_graph|safe }}
+
+        <div class="description">
+            <h3>Description</h3>
+            {% if description %}
+                <p>{{ description }}</p>
+            {% endif %}
         </div>
+
+        <h3>Graphs</h3>
+        {% if avg_rating_graph %}
+            <div class="image-section">{{ avg_rating_graph|safe }}</div>
+        {% endif %}
+        {% if num_reviews_graph %}
+            <div class="image-section">{{ num_reviews_graph|safe }}</div>
+        {% endif %}
     </main>
 </body>
 </html>

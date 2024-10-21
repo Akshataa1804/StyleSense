@@ -7,33 +7,43 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+        </ul>
+    </nav>
     <header>
         <h1>Inventory Analysis</h1>
-        <nav>
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/transaction_analysis">Transaction Analysis</a></li>
-                <li><a href="/inventory_analysis">Inventory Analysis</a></li>
-            </ul>
-        </nav>
     </header>
     <main>
+        <h2>Generate Inventory Analysis</h2>
         <div>
-            <h2>Product Availability (In Stock vs Out Of Stock)</h2>
-            {{ availability_graph|safe }}
+            <button class="button" onclick="location.href='{{ url_for('plot_availability_route') }}'">Product Availability</button>
+            <button class="button" onclick="location.href='{{ url_for('plot_price_distribution_route') }}'">Price Distribution</button>
+            <button class="button" onclick="location.href='{{ url_for('plot_available_sizes_route') }}'">Top 10 Available Sizes</button>
+            <button class="button" onclick="location.href='{{ url_for('plot_available_colors_route') }}'">Top 10 Available Colors</button>
         </div>
-        <div>
-            <h2>Price Distribution</h2>
-            <img src="data:image/png;base64,{{ price_distribution_graph }}" alt="Price Distribution">
+
+        <div class="description">
+            <h3>Description</h3>
+            {% if description %}
+                <p>{{ description }}</p>
+            {% endif %}
         </div>
-        <div>
-            <h2>Top 10 Available Sizes</h2>
-            {{ available_sizes_graph|safe }}
-        </div>
-        <div>
-            <h2>Top 10 Available Colors</h2>
-            {{ available_colors_graph|safe }}
-        </div>
+
+        <h3>Graphs</h3>
+        {% if availability_graph %}
+            <div class="image-section">{{ availability_graph|safe }}</div>
+        {% endif %}
+        {% if price_distribution_graph %}
+            <div class="image-section"><img src="data:image/png;base64,{{ price_distribution_graph }}" alt="Price Distribution"></div>
+        {% endif %}
+        {% if available_sizes_graph %}
+            <div class="image-section">{{ available_sizes_graph|safe }}</div>
+        {% endif %}
+        {% if available_colors_graph %}
+            <div class="image-section">{{ available_colors_graph|safe }}</div>
+        {% endif %}
     </main>
 </body>
 </html>

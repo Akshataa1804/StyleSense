@@ -41,6 +41,67 @@ h2 {
     color: #4E301F; /* Dark brown for subheadings */
 }
 
+.upload-section {
+    text-align: center;
+    margin: 20px;
+}
+
+.upload-section input[type="file"] {
+    margin: 10px 0;
+}
+
+.upload-section button {
+    padding: 10px 20px;
+    background-color: #4E301F; /* Dark brown */
+    color: #F4D6A5; /* Light beige */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.upload-section button:hover {
+    background-color: #AD8153; /* Lighter brown on hover */
+}
+
+.description {
+    text-align: center;
+    font-size: 16px;
+    color: #31291c; /* Darker beige for text */
+    animation: fadeIn 1s ease-in-out; /* Fade-in animation */
+    margin: 20px 0; /* Margin for spacing */
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.image-section {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.dashboard-image {
+    max-width: 100%; /* Responsive image */
+    height: auto;
+    animation: slideIn 1s ease-in-out; /* Slide-in animation */
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
 ul {
     list-style-type: none;
     padding: 20px;
@@ -59,4 +120,25 @@ ul li:hover {
     transform: translateY(-5px);
     background-color: #AD8153; /* Change background on hover */
     color: #F4D6A5; /* Change text color on hover */
+}
+
+/* New Styles for Buttons */
+.button {
+    padding: 10px 20px;
+    background-color: #4E301F; /* Dark brown */
+    color: #F4D6A5; /* Light beige */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px 0;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.button:hover {
+    background-color: #AD8153; /* Lighter brown on hover */
+    transform: translateY(-2px); /* Subtle lift effect */
+}
+
+.button:active {
+    transform: translateY(0); /* Reset lift on click */
 }
